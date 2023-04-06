@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="./assets/fonts/">
+    <link rel="stylesheet" href="./assets/fonts/base.css">
+    <title>C-VINYL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/fonts/icons/themify-icons/themify-icons.css">
+    <script src="./script/script1.js" defer></script> 
+    <script type="module" defer>
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import { getDatabase, firebase } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBVqxlJFeccQBAefYHlHBRDMslV-q3WtSc",
+          authDomain: "c-vinyl-856bd.firebaseapp.com",
+          databaseURL: "https://c-vinyl-856bd-default-rtdb.firebaseio.com",
+          projectId: "c-vinyl-856bd",
+          storageBucket: "c-vinyl-856bd.appspot.com",
+          messagingSenderId: "199115316354",
+          appId: "1:199115316354:web:74c0fc54797eb91bcaa89b",
+          measurementId: "G-279FM2S04K"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+    <script defer>
+    let saveUserData=()=> {
+        
+        // Lấy các giá trị từ các trường input
+        const email = document.querySelector('input[placeholder="Email của bạn"]').value;
+        const password = document.querySelector('input[placeholder="Mật khẩu của bạn"]').value;
+        const confirmPassword = document.querySelector('input[placeholder="Nhập lại mật khẩu"]').value;
+      
+        // Tạo một object chứa các giá trị này
+        const userData = {
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword
+        };
+      
+        // // Đẩy object này lên Realtime Database
+        // firebase.database().ref('User').push(userData);
+        alert("Đăng ký thành công!")
+    }
+    </script>
+    <script defer>
+        let icon=()=>
+        {
+            alert("Sorry, this feature has not been defined!")
+        }
+    </script>
+    <script>
+        var valueUser = firebase.database().ref('User').child('email');
+       valueUser.on('value', snap => {
+       console.log('email: ', snap.val());
+       document.getElementById("hello").innerHTML= snap.val();})
+     </script>
+</head>
+<body>
+    
+        <!--HEADER HAI-->
+        <div class="header">
+            <div class="header__navbar">
+                <div class="header__navbar-list header__navbar-list-item">
+                    <div class="header__navbar-item"><a id="header__navbar-item--1" href="index1.html"><div> Products</div></a></div>
+                    <div class="header__navbar-item"><a id="header__navbar-item--2" href="index2.html"><div> Starter Packs</div></a></div>
+                    <div class="header__navbar-item"><a id="header__navbar-item--3" href="index3.html"><div> Services</div></a></div>
+                    <div class="header__navbar-item"><a id="header__navbar-item--4" href="index4.html"><div> About Us</div></a></div>
+                </div>
+                <div class="header__navbar-vinyl">
+                    <img src="./assets/img/dist2.png" alt="" class="header__navbar-vinyl-dist">
+                    <a href="index.html" id="header__navbar-vinyl--return"><span style="font-family:Arial, Helvetica, sans-serif;font-weight:1000;font-size: 1.6rem;">C-VINYL</span></a>
+                </div>
+                <div class="header__navbar-list">
+                    <div class="header__navbar-icon">
+                        <div><img onclick="icon()"class="header__navbar-icon--child" src="./assets/img/giohang.png" alt=""></div>
+                        <div><img onclick="icon()"class="header__navbar-icon--child" src="/assets/img/ngonngu.png" alt=""></div>
+                        <div><img onclick="icon()"class="header__navbar-icon--child" src="./assets/img/kinhlup.png" alt=""></div>
+                    </div>
+                    <div class="header__navbar-register">
+                        <button class="header__navbar-register-button" onclick="icon()">Log in</button>
+                        <button class="header__navbar-register-button" id="sign-up">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header--responsive">
+            <div class="header__navbar--resposive">
+                <ul class="header__navbar-list-item--responsive" id="hamburger-btn" style="position: relative;">
+                    <div style="background-color: #000;margin-bottom: 4px;height: 3px;width: 31px;"></div>
+                    <div style="background-color: #000;margin-bottom: 4px;height: 3px;width: 25.729px;"></div>
+                    <div style="background-color: #000;margin-bottom: 4px;height: 3px;width: 17.979px;"></div>
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <!-- <div class="model__overlay"></div> -->
+                        <div class="hamburger__inner">
+                            <div class="hamburger-inner-nav">
+                                <div class="header__navbar-item header__navbar-item-hambur"><a id="header__navbar-item--1" href="index1.html" ><div> Products</div></a></div>
+                                <div class="header__navbar-item header__navbar-item-hambur"><a id="header__navbar-item--2" href="index2.html"><div style="margin-left: 25px;"> Starter Packs</div></a></div>
+                                <div class="header__navbar-item header__navbar-item-hambur"><a id="header__navbar-item--3" href="index3.html"><div> Services</div></a></div>
+                                <div class="header__navbar-item header__navbar-item-hambur"><a id="header__navbar-item--4" href="index4.html"><div> About Us</div></a></div>
+                            </div>
+                            <div class="hamburger-inner-authen">
+                                <button class="header__navbar-register-button header__navbar-register-button-hambur" onclick="icon()">Log in</button>
+                                <button class="header__navbar-register-button header__navbar-register-button-hambur" id="sign-up--in-hamburger">Sign up</button>
+                            </div>
+                            <button class="btn auth-form__controls-back controls-back-hambur" id="hamburger__controls-back" onclick="consoleon()">TRỞ LẠI</button>
+                            </div>
+                    </div>
+                </ul>
+                <div class="header__navbar-vinyl--responsive">
+                    <img src="./assets/img/dist2.png" alt="" class="header__navbar-vinyl-dist--responsive">
+                    <a href="index.html" id="header__navbar-vinyl--return--responsive"><span style="font-weight:1000;font-size: 1.4rem;">C-VINYL</span></a>
+                </div>
+                <ul class="header__navbar-list--responsive">
+                    <div><img onclick="icon()"class="header__navbar-icon--child" src="./assets/img/giohang.png" alt=""></div>
+                    <div><img onclick="icon()"class="header__navbar-icon--child" src="/assets/img/ngonngu.png" alt=""></div>
+                    <div><img onclick="icon()"class="header__navbar-icon--child" src="./assets/img/kinhlup.png" alt=""></div>
+                </ul>
+            </div>
+        </div>
+        <!--CONTAINER-->
+        <div class="container ">
+            <div class="container__1">
+                <div class="container__1-text">SUGGESTION</div>
+                <div class="container__1-box">
+                    <div class="container__1-famyly-pic"><img style="border: 3px solid #FFFFFF; border: none; margin-left: 50px;
+                        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));border-radius: 3px;width: 80%;height: auto;" src="./assets/img/Group 155.png" alt=""></div>
+                    <!-- <div class="container__1-disc-pic"><img style="filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));width:100%;height: auto;" src="./assets/img/dist.png" alt="" ></div> -->
+                    <div class="container__1-box-child">
+                        <div class="container__1-box--singer">Kendrick Lamar</div>
+                        <div class="container__1-box--album">  Mr.Morale &</div>
+                        <div class="container__1-box--album">the Big Steppers</div>
+                        <div class="container__1-box--buy">BUY NOW</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__2and3">
+                <div class="container__2">
+                    <div class="container__2-text">
+                        <div class="container__2-title">Discover your true GENRES</div>
+                        <div class="container__2-content">We will help you to experience and find out your Jam</div>
+                        <div style="background-color: #fff;
+                            padding: 15px 0; border-radius: 50px; 
+                            display: flex; justify-content: center; 
+                            align-items: center;margin-left: 15px;width:70%">
+                            <div class="container__2-question">Who is your favorite artist?...</div>
+                        </div>
+                    </div>
+                    <div class="container__2-human"><img style="width:100%" src="./assets/img/Group 77.png" alt="" ></div>
+                </div>
+                <div class="container__3">HIGHLIGHT</div>
+                <img style="width: 100% ;height: auto;" src="./assets/img/Group 3.png" alt="">        
+            </div>
+            <div class="container__4">
+                <img style="width: 100%;" src="./assets/img/Group 146.png" alt="">
+            </div>
+            
+            <!-- <div class="container__5">
+                <img src="./assets/img/Group 31.png" alt="">
+                <img style="margin-top: 20px ; height: 70%;" src="./assets/img/Group 56.png" alt="">
+            </div> -->
+                <!-- <img src="./assets/img/Group 145.png" alt="" class="picture_decor" 
+                    style="
+                        position: absolute; 
+                        width: 1000px;
+                       
+                    ">
+                </div>
+                <img src="./assets/img/Group 146.png" alt="" style="
+                position: absolute;
+                width: 100%;
+                margin-top: 1100px;
+            ">
+            </div> -->
+
+            <!-- <div class="container__3">
+               <div class="container__3-title">MENTIONED ON SOCIAL MEDIA</div>
+               <div class="container__3-items">
+                    <img src="./assets/img/Frame 45.png" alt="" class="item_1">
+                    <img src="./assets/img/Frame 46.png" alt="" class="item_2">
+               </div>
+
+               <div style="
+                    position: relative;
+               ">
+                    <img src="./assets/img/Group 31.png" alt="" class="display">
+                    <img src="./assets/img/Group 56.png" alt="" class="pages">
+               </div>
+            -->
+            <div class="container__index__smallstitle">MENTIONED ON SOCIAL MEDIA</div>
+            <!-- Carousel -->
+            <div class="body-wrap">
+                <div class="wrapper-list">
+                    <i id="left" class="ti-angle-left"></i>
+                    <div class="carousel">
+                        
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <i id="right" class="ti-angle-right"></i>
+                </div> 
+            </div>
+            <hr>
+            <div class="body-wrap">
+                <div class="wrapper-list">
+                    <i id="left" class="ti-angle-left"></i>
+                    <div class="carousel">
+                        
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                                <!-- CONTENT n -->
+                                <div class="content-container-list">
+                                    <div class="content-list">
+                                        <img src="./assets/img/imageforcart.png" />
+                                        <h4 class="name">TROPICAL & LOVE</h4>
+                                        <h5 class="artist">10cc</h5>
+                                        <h3 class="price">16.81$</h3>
+                                    </div>
+                                    <div class="label">
+                                        <Span class="status">AVAILABLE</Span>
+                                        <div class="M">M</div>
+                                        <img src="./assets/img/add-to-basket.png" class="img-bag" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <i id="right" class="ti-angle-right"></i>
+                </div> 
+            </div>
+        <!--FOOTER-->
+        <div class="footer">
+            <div class="footer__group" style="background-color: #CEA69D;">
+                <div class="footer__group-1">
+                    <div><img src="./assets/img/dist3.png" alt=""></div>
+                    <div class="footer__font" style="font-weight: 900">C-VINYL</div>
+                    <span style="color: #fff;">Find your true genres</span>
+                </div>
+                <div class="footer__group-2">
+                    <div class="footer__font"style="font-weight: 300px;">INFORMATION</div>
+                    <div class="footer__group-line"></div>
+                    <div class="footer__group-2-child">
+                        <div class="footer__child">
+                            <span class="footer__font">About us</span>
+                            <span class="footer__font">Mixtape</span>
+                        </div>
+                        <span class="footer__font">Newsletter</span>
+                    </div>
+                </div>
+                <div class="footer__group-3">
+                    <div class="footer__font"style="font-weight: 300px;">SUPPORT</div>
+                    <div class="footer__group-line"></div>
+                    <div class="footer__group-3-child">
+                        <div class="footer__child">
+                            <div class="footer__font">Delivery</div>
+                            <div class="footer__font" style="width: 111.22px;">Pay</div>
+                        </div>
+                        <div class="footer__child">
+                            <div class="footer__font">Contact</div>
+                            <div class="footer__font">Shopping guide</div>
+                        </div>
+                        <div class="footer__font">Private Policy</div>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="modal__sign-up">
+            <!-- <div class="model__overlay"></div> -->
+            <div class="auth-form">
+                <div class="modal__inner">
+                        <div class="auth-form__container">
+                            <div class="auth-form__header">
+                                <h3 class="auth-form__heading">Đăng ký</h3>
+                                <span class="auth-form__switch-btn">Đăng nhập</span>
+                            </div>
+                            <div class="auth-form__form">
+                                <div class="auth-form__group">
+                                    <input type="text" class="auth-form__input" placeholder="Email của bạn" id="hello">
+                                    <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                                    <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu">
+                                </div>
+                                <div class="auth-form__assign">
+                                    <p class="auth-form__policy-text">
+                                        Bằng việc đăng kí bạn đã đồng ý với C-VINYL về
+                                        <a class="auth-form__text-link" href="">
+                                            Điều khoản dịch vụ
+                                        </a>&
+                                        <a class="auth-form__text-link" href="">
+                                            Chính sách bảo mật
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="auth-form__controls">
+                                    <button class="btn auth-form__controls-back" id="auth-form__controls-back">TRỞ LẠI</button>
+                                    <button class="btn btn--primary">ĐĂNG KÝ</button>
+                                </div>
+                        </div>
+                            <div class="auth-form__socials">
+                                <a href="" class="btn btn--with-icon">
+                                    Kết nối với Facebook
+                                </a>
+                                <a href="" class="btn btn--with-icon">
+                                    Kết nối với Google
+                                </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./assets/fonts/script.js"></script>
+</body>
+</html>
